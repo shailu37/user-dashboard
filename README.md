@@ -1,59 +1,100 @@
-# UserDashboard
+User Dashboard – Angular Assignment
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.
+A modern User Dashboard application built with Angular, Angular Material, and Bootstrap, featuring real-time user management and dynamic role-based data visualization.
+The project focuses on performance optimization, lazy loading, and reactive state management using RxJS.
 
-## Development server
+🚀 Features
 
-To start a local development server, run:
+User Dashboard
 
-```bash
+Displays users in a Material table
+
+Columns: Name, Email, Role
+
+Add User (Lazy-Loaded Modal)
+
+Angular Material dialog form
+
+Fields: Name, Email, Role (Admin / Editor / Viewer)
+
+Reactive form validation
+
+Loaded only when required
+
+Dynamic Role Distribution Chart
+
+Pie chart using Chart.js
+
+Chart.js is dynamically imported
+
+Updates automatically when users are added
+
+Reactive State Management
+
+Centralized user state using RxJS BehaviorSubject
+
+Table and chart update in real time
+
+Modern UI
+
+Angular Material components
+
+Bootstrap layout utilities
+
+Design theme:
+
+Primary color: #1c4980
+
+Text color: #383838
+
+Input and button height: 48px
+
+🛠 Tech Stack
+
+Angular (14+)
+
+Angular Material
+
+Bootstrap
+
+Chart.js
+
+RxJS
+
+⚡ Performance Optimizations
+
+Lazy loading for:
+
+User form component
+
+Chart.js library
+
+Reduced initial bundle size
+
+Chart initialized only after view rendering
+
+📦 Installation & Setup
+git clone <repository-url>
+cd <project-folder>
+npm install
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200 in the browser.
 
-## Code scaffolding
+🌐 Deployment
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The application is deployed on Netlify with GitHub CI/CD integration.
 
-```bash
-ng generate component component-name
-```
+Every push to the main branch triggers an automatic production deployment
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Client-side routing is handled via Netlify redirects
 
-```bash
-ng generate --help
-```
+📌 Notes
 
-## Building
+Dummy users are preloaded using RxJS for demonstration
 
-To build the project run:
+Remove dummy data easily by clearing the initial BehaviorSubject state
 
-```bash
-ng build
-```
+👤 Author
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Shailendra Rawat
