@@ -1,0 +1,53 @@
+/* Colors from assignment */
+$primary: #1c4980;
+$text-dark: #383838;
+
+.page-title {
+  color: $text-dark;
+  font-weight: 600;
+}
+
+.add-user-btn {
+  color: $primary;
+  border: 1px solid $primary;
+  border-radius: 24px;
+  padding: 0 20px;
+  height: 48px;
+}
+
+.dashboard-card {
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Table */
+th {
+  color: $text-dark;
+  font-weight: 600;
+}
+
+td {
+  color: $text-dark;
+}
+
+/* Chart */
+.chart-card {
+  text-align: center;
+}
+
+.chart-title {
+  color: $text-dark;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.chart-wrapper {
+  height: 280px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
