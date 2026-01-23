@@ -35,7 +35,7 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userService.users$.subscribe((users) => {
       this.users = users;
-      this.updateChart(); // ✅ only update data
+      this.updateChart();
     });
   }
 
@@ -44,7 +44,7 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
   }
 
   async initChart() {
-    if (this.chart) return; // ✅ prevent duplicate chart creation
+    if (this.chart) return;
 
     const Chart = (await import('chart.js/auto')).default;
 
@@ -65,7 +65,7 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
       },
     });
 
-    this.updateChart(); // ✅ first render
+    this.updateChart();
   }
 
   updateChart() {
