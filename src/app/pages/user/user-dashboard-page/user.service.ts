@@ -28,6 +28,16 @@ export class UserService {
       email: 'priya@test.com',
       role: 'Editor',
     },
+    {
+      name: 'Rohtash Singh',
+      email: 'Rohtash@test.com',
+      role: 'Viewer',
+    },
+    {
+      name: 'Riya Kapoor',
+      email: 'Riya@test.com',
+      role: 'Editor',
+    },
   ]);
   users$ = this.usersSubject.asObservable();
   addUser(user: User) {

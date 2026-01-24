@@ -12,7 +12,7 @@
     <!-- TABLE CARD -->
     <div class="col-lg-7">
       <mat-card class="dashboard-card">
-        <table mat-table [dataSource]="users" class="w-100">
+        <table mat-table [dataSource]="dataSource" class="w-100">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let u">{{ u.name }}</td>
@@ -43,6 +43,18 @@
           <canvas #chart></canvas>
         </div>
       </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="d-flex justify-content-end">
+        <mat-paginator
+          [pageSize]="defaultPageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          showFirstLastButtons
+        >
+        </mat-paginator>
+      </div>
     </div>
   </div>
 </div>

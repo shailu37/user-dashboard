@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../pages/user/user-dashboard-page/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-form',
@@ -31,6 +32,7 @@ export class UserFormComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<UserFormComponent>,
   ) {
     this.form = this.fb.group({
@@ -45,9 +47,20 @@ export class UserFormComponent {
   }
 
   submit() {
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
     this.userService.addUser(this.form.value as any);
+
+    this.snackBar.open('User added successfully', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      panelClass: ['success-snackbar'],
+    });
+
     this.dialogRef.close();
   }
 }

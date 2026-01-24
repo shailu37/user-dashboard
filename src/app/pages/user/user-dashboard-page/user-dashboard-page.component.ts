@@ -2,31 +2,43 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 
 import { UserService } from './user.service';
 import { User } from '../../../shared/user.model';
 import { MatCardModule } from '@angular/material/card';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-dashboard-page',
   standalone: true,
-  imports: [MatDialogModule, MatTableModule, MatButtonModule, MatCardModule],
+  imports: [
+    MatDialogModule,
+    MatTableModule,
+    MatButtonModule,
+    MatCardModule,
+    MatPaginatorModule,
+  ],
   templateUrl: './user-dashboard-page.component.html',
   styleUrl: './user-dashboard-page.component.scss',
 })
-export class UserDashboardPageComponent implements OnInit, AfterViewInit {
-  users: User[] = [];
+export class UserDashboardPageComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   cols = ['name', 'email', 'role'];
   chart: any;
+  pageSizeOptions = [5, 10, 15, 20];
+  defaultPageSize = 5;
 
   @ViewChild('chart', { static: false }) chartRef!: ElementRef;
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  dataSource = new MatTableDataSource<User>([]);
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
@@ -34,13 +46,14 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.userService.users$.subscribe((users) => {
-      this.users = users;
+      this.dataSource.data = users;
       this.updateChart();
     });
   }
 
   ngAfterViewInit() {
     this.initChart();
+    this.dataSource.paginator = this.paginator;
   }
 
   async initChart() {
@@ -72,7 +85,7 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
     if (!this.chart) return;
 
     const count = { Admin: 0, Editor: 0, Viewer: 0 };
-    this.users.forEach((u) => count[u.role]++);
+    this.dataSource.data.forEach((u) => count[u.role]++);
 
     this.chart.data.datasets[0].data = Object.values(count);
     this.chart.update();
@@ -85,5 +98,11 @@ export class UserDashboardPageComponent implements OnInit, AfterViewInit {
     this.dialog.open(UserFormComponent, {
       width: '800px',
     });
+  }
+  ngOnDestroy() {
+    if (this.chart) {
+      this.chart.destroy();
+      this.chart = null;
+    }
   }
 }
