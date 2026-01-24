@@ -32,6 +32,15 @@
           <tr mat-row *matRowDef="let row; columns: cols"></tr>
         </table>
       </mat-card>
+
+      <div class="d-flex justify-content-end">
+        <mat-paginator
+          [pageSize]="defaultPageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          showFirstLastButtons
+        >
+        </mat-paginator>
+      </div>
     </div>
 
     <!-- CHART CARD -->
@@ -43,18 +52,6 @@
           <canvas #chart></canvas>
         </div>
       </mat-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-7">
-      <div class="d-flex justify-content-end">
-        <mat-paginator
-          [pageSize]="defaultPageSize"
-          [pageSizeOptions]="pageSizeOptions"
-          showFirstLastButtons
-        >
-        </mat-paginator>
-      </div>
     </div>
   </div>
 </div>
