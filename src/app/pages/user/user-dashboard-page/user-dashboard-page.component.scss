@@ -48,3 +48,25 @@ canvas {
   width: 100% !important;
   height: 100% !important;
 }
+
+.custom-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.06);
+  display: flex;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  // display: flex;
+}
+
+.custom-modal {
+  width: 800px;
+  min-height: 200px;
+  background: #fff;
+  border-radius: 12px;
+  color: #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  z-index: 1000;
+}
